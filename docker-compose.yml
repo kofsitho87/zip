@@ -1,0 +1,19 @@
+version: "3"
+services:
+  back_app:
+    depends_on:
+      - db
+    build: .
+    ports:
+      - "3000:3000"
+
+  db:
+    image: mongo
+    container_name: db_mongo
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  mongodata:
